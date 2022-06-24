@@ -1,7 +1,7 @@
 
 
 #background-img{
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/new background.jpg");
     height: 400px;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
 
 #header-section {
 	background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.5);
     color: #fff;
     font-weight: 700;
     position: absolute;
