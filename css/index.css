@@ -28,9 +28,13 @@ p {
 }
 
 #header-img {
-	background-image: url("../images/nikita-tikhomirov-bxT82IUY_H8-unsplash.jpg");
-	max-width: 100%;
-  	height: auto;
+	background-image: url("../images/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width:100%;
+	left: 30%;
+	right: 30%;
+	height: 25em;
 }
 
  .hide {
