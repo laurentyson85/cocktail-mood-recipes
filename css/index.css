@@ -52,8 +52,8 @@
   
   .dropdown-content {
 	display: none;
-	position: absolute;
-	margin-left: 466.5px; 
+	position: relative;	
+	text-align: center;
 	background-color: #f1f1f1;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -65,6 +65,7 @@
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;	
+	text-align: center;
   }
   
   .dropdown-content a:hover {
