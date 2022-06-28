@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
      let favorites = document.querySelectorAll("favorites")
      let mood
      let spirit
+     let ids
+     let randomDrinkId
+     let cocktail
 
 
     document.addEventListener('click', function (event) {      
@@ -24,21 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(spirit)
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                console.log(data.drinks[0].idDrink)
-                let ids = data.drinks.map(element => element.idDrink)
-                console.log(ids)             
+            .then(data => {                
+                ids = data.drinks.map(element => element.idDrink)
+                randomDrinkId = Math.floor(Math.random()*ids.length)
+                cocktail = (ids[randomDrinkId])  
+                console.log(cocktail)       
                
 
             })         
     
         }   
-    })   
+    })
+    
+    
+    
 })
 
 
 
+  
 
 
 
