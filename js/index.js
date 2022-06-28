@@ -1,7 +1,5 @@
  
 document.addEventListener("DOMContentLoaded", () => { 
-     
-
      let errorBanner = document.querySelector("#error-banner")
      let moodBtn = document.querySelector(".moodDropDownBtn")
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
@@ -11,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let spirit
      let ids
      let randomDrinkId
-     let cocktail
+     let cocktailId
 
 
     document.addEventListener('click', function (event) {      
@@ -30,8 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {                
                 ids = data.drinks.map(element => element.idDrink)
                 randomDrinkId = Math.floor(Math.random()*ids.length)
-                cocktail = (ids[randomDrinkId])  
-                console.log(cocktail)       
+                cocktailId = (ids[randomDrinkId])  
+                console.log(cocktailId)  
+                fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
+                .then(response => response.json())
+                .then(data => console.log(data))  
                
 
             })         
