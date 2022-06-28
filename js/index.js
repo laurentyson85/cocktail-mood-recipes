@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
      let ids
      let randomDrinkId
      let cocktailId
+     let ingredients
+     let measurements
 
 
     document.addEventListener('click', function (event) {      
@@ -28,16 +30,30 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {                
                 ids = data.drinks.map(element => element.idDrink)
                 randomDrinkId = Math.floor(Math.random()*ids.length)
-                cocktailId = (ids[randomDrinkId])  
-                console.log(cocktailId)  
+                cocktailId = (ids[randomDrinkId])                   
+                spiritBtn.hidden = true
                 fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
                 .then(response => response.json())
-                .then(data => console.log(data))  
+                .then(data => {
+                    console.log(data.drinks[0])
+                    ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1])
+                    console.log(ingredients)
+                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1])
+                    console.log(measurements)
+
+
+                })  
                
 
-            })         
-    
-        }   
+            })       
+        }  
+        
+        // function renderCocktail(){
+
+        // }
+        
+
+
     })
     
     
