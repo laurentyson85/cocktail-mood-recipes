@@ -22,12 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target.matches('.spiritDropBtn')) {            
             spirit = event.target.innerText
             console.log(spirit)
-            // fetch("www.thecocktaildb.com/api/json/v1/1/filter.php?i=")
-            // .then(response => response.json())
-            // .then(data => {
-            //     data.map(data => renderMonster(data))
-            // })
-            
+            fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
+            .then(response => response.json())
+            .then(data => {console.log(data)})         
     
         }   
     })   
