@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
      let errorBanner = document.querySelector("#error-banner")
      let moodBtn = document.querySelector(".moodDropDownBtn")
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
-     let recipeSection = document.querySelector("cocktail-recipe")
-     let favorites = document.querySelectorAll("favorites")
+     let recipeSection = document.querySelector("#cocktail-recipe")
+     let favorites = document.querySelector("#favorites")
      let mood
      let spirit
      let ids
      let randomDrinkId
      let cocktailId
-     let recipe
+     let fullRecipe
      let ingredients
      let measurements
 
@@ -36,40 +36,54 @@ document.addEventListener("DOMContentLoaded", () => {
                 fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
                 .then(response => response.json())
                 .then(data => {
-                    recipe = data.drinks[0]
-                    console.log(recipe)
-                    let allIngredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1])
+                    fullRecipe = data.drinks[0]
+                    console.log(fullRecipe)
 
-                    ingredients = allIngredients.filter(element => element !== null)
+                    ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
                 
                     console.log(ingredients)
-                    
-                    let allMeasurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1])
 
-                    measurements = allMeasurements.filter(element => element !== null)
+                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)                 
 
                     console.log(measurements)
 
-
+                    renderCocktail()
                 })  
-               
-
             })       
         }  
         
-        // function renderCocktail(){
+        function renderCocktail(){
+            const div = document.createElement("div")
+            div.classList.add("card")
+            div.id = fullRecipe.idDrink
 
-        // }
+            const img = document.createElement("img")
+            img.src = fullRecipe.strDrinkThumb
+            img.classList.add("thumbnail")
+
+            const h2 = document.createElement("h2")
+            h2.textContent = fullRecipe.strDrink
+
+            const p1 = document.createElement('p')            
+            p1.textContent = (measurements.forEach(measurement => measurement))
+
+            const p2 = document.createElement('p')            
+            p2.textContent = (ingredients.forEach(measurement => measurement))
+
+            const instructions = document.createElement("p")
+            instructions.textContent = fullRecipe.strInstructions      
+                  
+            const selectedMood= document.createElement("p")
+            selectedMood.textContent = mood
+
+            div.append(img, h2, p1, p2, instructions, selectedMood)
+            recipeSection.append(div)
+        }     
+
         
-
-
     })
-    
-    
-    
+
 })
-
-
 
   
 
