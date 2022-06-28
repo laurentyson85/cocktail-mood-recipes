@@ -24,7 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(spirit)
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
             .then(response => response.json())
-            .then(data => {console.log(data)})         
+            .then(data => {
+                console.log(data)
+                console.log(data.drinks[0].idDrink)
+                let ids = data.drinks.map(element => element.idDrink)
+                console.log(ids)             
+               
+
+            })         
     
         }   
     })   
