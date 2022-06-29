@@ -50,8 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 
                     for (let i=0; i< measurements.length; i++){
-                        allIngredients.push(measurements[i])
-                        allIngredients.push(ingredients[i])
+                        let line = `${measurements[i]} ${ingredients[i]}`
+                        // allIngredients.push(measurements[i])
+                        allIngredients.push(line)
+                        // allIngredients.push(ingredients[i])
                     }
 
                     renderCocktail()
