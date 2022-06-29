@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
         if (event.target.matches('.spiritDropBtn')) {            
-            spirit = event.target.innerText
-            console.log(spirit)
+            spirit = event.target.innerText            
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
             .then(response => response.json())
             .then(data => {                
@@ -37,23 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
                 .then(response => response.json())
                 .then(data => {
-                    fullRecipe = data.drinks[0]
-                    console.log(fullRecipe)
+                    fullRecipe = data.drinks[0]                    
 
                     ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
                 
-                    console.log(ingredients)
-
-                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)                 
-
-                    console.log(measurements)
-
-                
+                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)              
+                                                    
                     for (let i=0; i< measurements.length; i++){
-                        let line = `${measurements[i]} ${ingredients[i]}`
-                        // allIngredients.push(measurements[i])
-                        allIngredients.push(line)
-                        // allIngredients.push(ingredients[i])
+                        let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
+                        allIngredients.push(ingredientRow)                        
                     }
 
                     renderCocktail()
@@ -67,7 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
             mainDiv.id = fullRecipe.idDrink
 
             const secondDiv = document.createElement("div")
-            secondDiv.classList.add("cardInfo")
+            secondDiv.classList.add("container")
+
+            const h2 = document.createElement("h2")
+            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
+
+            const selectedMood= document.createElement("p")
+            selectedMood.textContent = `Current Mood: ${mood}`
+
+            const thirdDiv = document.createElement("div")
+            thirdDiv.classList.add("cardInfo")
         
         
             const br = document.createElement("br")
@@ -77,21 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
             img.id = "drinkImg"
             img.classList.add("thumbnail")
 
-            const h2 = document.createElement("h2")
-            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
-
+            
             const p = document.createElement('p')            
-            p.textContent = `Ingredients: ${allIngredients.join(", ")}`
-            console.log(allIngredients)
+            p.textContent = `Ingredients: ${allIngredients.join(", ")}`            
 
             const instructions = document.createElement("p")
             instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`      
                   
-            const selectedMood= document.createElement("p")
-            selectedMood.textContent = `Current Mood: ${mood}`
-
-            secondDiv.append(selectedMood, h2, p, br, instructions)
-            mainDiv.append(img, secondDiv)
+            
+            thirdDiv.append(p, br, instructions)
+            secondDiv.append(img, h2, selectedMood)
+            mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(mainDiv)
         }     
 
