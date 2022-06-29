@@ -40,8 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
                 
-                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)              
-                                                    
+                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null) 
+                    
+                    //think about refactoring with a map                                                    
                     for (let i=0; i< measurements.length; i++){
                         let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
                         allIngredients.push(ingredientRow)                        
