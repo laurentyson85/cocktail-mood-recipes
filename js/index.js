@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
+            img.id = "drinkImg"
             img.classList.add("thumbnail")
 
             const h2 = document.createElement("h2")
