@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let fullRecipe
      let ingredients
      let measurements
+     let allIngredients = []
 
 
     document.addEventListener('click', function (event) {      
@@ -47,6 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     console.log(measurements)
 
+                
+                    for (let i=0; i< measurements.length; i++){
+                        allIngredients.push(measurements[i])
+                        allIngredients.push(ingredients[i])
+                    }
+
                     renderCocktail()
                 })  
             })       
@@ -57,26 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
             div.classList.add("card")
             div.id = fullRecipe.idDrink
 
+            const br = document.createElement("br")
+
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
             img.classList.add("thumbnail")
 
             const h2 = document.createElement("h2")
-            h2.textContent = fullRecipe.strDrink
+            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
 
-            const p1 = document.createElement('p')            
-            p1.textContent = (measurements.forEach(measurement => measurement))
-
-            const p2 = document.createElement('p')            
-            p2.textContent = (ingredients.forEach(measurement => measurement))
+            const p = document.createElement('p')            
+            p.textContent = `Ingredients: ${allIngredients}`
 
             const instructions = document.createElement("p")
-            instructions.textContent = fullRecipe.strInstructions      
+            instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`      
                   
             const selectedMood= document.createElement("p")
-            selectedMood.textContent = mood
+            selectedMood.textContent = `Current Mood: ${mood}`
 
-            div.append(img, h2, p1, p2, instructions, selectedMood)
+            div.append(img, br, selectedMood, br, h2, br, p, br, instructions)
             recipeSection.append(div)
         }     
 
