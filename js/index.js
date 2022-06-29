@@ -60,10 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }  
         
         function renderCocktail(){
-            const div = document.createElement("div")
-            div.classList.add("card")
-            div.id = fullRecipe.idDrink
+            const mainDiv = document.createElement("div")
+            mainDiv.classList.add("card")
+            mainDiv.id = fullRecipe.idDrink
 
+            const secondDiv = document.createElement("div")
+            secondDiv.classList.add("cardInfo")
+        
+        
             const br = document.createElement("br")
 
             const img = document.createElement("img")
@@ -83,8 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedMood= document.createElement("p")
             selectedMood.textContent = `Current Mood: ${mood}`
 
-            div.append(img, br, selectedMood, br, h2, br, p, br, instructions)
-            recipeSection.append(div)
+            secondDiv.append(selectedMood, h2, p, br, instructions)
+            mainDiv.append(img, secondDiv)
+            recipeSection.append(mainDiv)
         }     
 
         
