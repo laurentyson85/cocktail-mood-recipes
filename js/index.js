@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
             h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
 
             const p = document.createElement('p')            
-            p.textContent = `Ingredients: ${allIngredients}`
+            p.textContent = `Ingredients: ${allIngredients.join(", ")}`
+            console.log(allIngredients)
 
             const instructions = document.createElement("p")
             instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`      
