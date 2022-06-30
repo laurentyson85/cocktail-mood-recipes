@@ -64,14 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
           
-
-            const pSpan = document.createElement("p")
-
-            const span = document.createElement("span")
-            span.classList.add("hoverMe")
-            span.textContent = "Hover for recipe!" 
-            span.addEventListener("mouseover",(handleOver))
-            // span.addEventListener("mouseleave", (handleLeave))
+            secondDiv.addEventListener("mouseover",(handleOver))
+            secondDiv.addEventListener("mouseleave", (handleLeave))
             
             
             const img = document.createElement("img")
@@ -87,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const thirdDiv = document.createElement("div")
             thirdDiv.id = "cardInfo"
-            thirdDiv.classList.add("hide")           
+            thirdDiv.classList.add("drinkInfo")           
 
             const p = document.createElement('p')            
             p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -97,9 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const instructions = document.createElement("p")
             instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`   
 
-            pSpan.append(span)
             thirdDiv.append(p, br, instructions)                
-            secondDiv.append(pSpan, img, selectedMood, h2)
+            secondDiv.append(img, selectedMood, h2)
             mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(mainDiv)
         }     
@@ -108,9 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("cardInfo").classList.remove('hide')
         }   
 
-        // function handleLeave(){
-
-        // }
+        function handleLeave(){
+            document.getElementById("cardInfo").classList.add('hide')
+        }
         
     })
 
