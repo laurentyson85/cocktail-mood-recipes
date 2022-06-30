@@ -62,6 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
 
+            const pSpan = document.createElement("p")
+
+            const span = document.createElement("span")
+            span.classList.add("hoverMe")
+            span.textContent = "Hover for details!"
+            
+            
+
+
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
             img.id = "drinkImg"
@@ -71,9 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
             h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
 
             const selectedMood= document.createElement("p")
-            selectedMood.textContent = `Current Mood: ${mood}`        
-                            
-            secondDiv.append(img, h2, selectedMood)
+            selectedMood.textContent = `Current Mood: ${mood}` 
+
+            pSpan.append(span)                
+            secondDiv.append(pSpan, img, h2, selectedMood)
             mainDiv.append(secondDiv)
             recipeSection.append(mainDiv)
         }     
