@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target.matches('.moodDropBtn')) {
            mood = event.target.innerText
            moodBtn.hidden = true
-           spiritBtn.hidden = false
-           console.log(mood)    
+           spiritBtn.hidden = false              
         }
     
         if (event.target.matches('.spiritDropBtn')) {            
@@ -61,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
-            secondDiv.addEventListener("mouseover",(handleOver))
-            secondDiv.addEventListener("mouseleave", (handleLeave))
+            // secondDiv.addEventListener("mouseover",(handleOver))
+            // secondDiv.addEventListener("mouseleave", (handleLeave))
 
             const pSpan = document.createElement("p")
 
@@ -76,38 +75,37 @@ document.addEventListener("DOMContentLoaded", () => {
             img.classList.add("thumbnail")
 
             const h2 = document.createElement("h2")
-            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
+            h2.textContent = `you should have a "${fullRecipe.strDrink}"`
 
             const selectedMood= document.createElement("p")
-            selectedMood.textContent = `Current Mood: ${mood}` 
+            selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
 
-            pSpan.append(span)                
-            secondDiv.append(pSpan, img, h2, selectedMood)
-            mainDiv.append(secondDiv)
+            const thirdDiv = document.createElement("div")
+            thirdDiv.classList.add("hide")           
+
+            const p = document.createElement('p')            
+            p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
+
+            const br = document.createElement("br")              
+                    
+            const instructions = document.createElement("p")
+            instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`   
+
+            pSpan.append(span)
+            thirdDiv.append(p, br, instructions)                
+            secondDiv.append(pSpan, img, selectedMood, h2)
+            mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(mainDiv)
         }     
 
+        // function handleOver(){
+
+        // }   
+
+        // function handleLeave(){
+
+        // }
         
     })
 
 })
-
-  
-
-
-
-
-
-// const thirdDiv = document.createElement("div")
-// thirdDiv.classList.add("cardInfo")
-
-// const p = document.createElement('p')            
-// p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
-
-// const br = document.createElement("br")              
-         
-// const instructions = document.createElement("p")
-// instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`   
-
-// thirdDiv.append(p, br, instructions)
-// mainDiv.append(thirdDiv)
