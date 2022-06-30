@@ -108,24 +108,34 @@ body {margin:25px;}
 }
 
 .container{
-	width: 40%;	
+		
 	margin: 0 auto;	
+	height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 600px;
 	background-color: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin-bottom: 25px;
 	text-align: center;
 	padding: 10px 20px;
 	border-radius: 8px;
+	
+    
 }
 
 .hoverMe{
     position: relative;
-    right:-20px;
-    top:10px;
-    background:red;
+    left:-170px;
+    top:8px;	
+	transform: rotate(-25deg);
+	display: inline-block;
+    background:rgb(105, 130, 96);
     text-align: center;
     border-radius: 30px 30px 30px 30px;
     color:white;
     padding:5px 10px;
     font-size:20px;
+	height: auto; 
+    width: auto; 
 }

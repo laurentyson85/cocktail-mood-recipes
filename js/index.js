@@ -66,11 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const span = document.createElement("span")
             span.classList.add("hoverMe")
-            span.textContent = "Hover for details!"
+            span.textContent = "Hover for recipe!"         
             
-            
-
-
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
             img.id = "drinkImg"
