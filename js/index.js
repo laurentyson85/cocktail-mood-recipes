@@ -60,36 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
-            secondDiv.id = drinkContainer
-
-            const h2 = document.createElement("h2")
-            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
-
-            const selectedMood= document.createElement("p")
-            selectedMood.textContent = `Current Mood: ${mood}`
-
-            const thirdDiv = document.createElement("div")
-            thirdDiv.classList.add("cardInfo")
-        
-        
-            const br = document.createElement("br")
+            secondDiv.id = "drinkContainer"
 
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
             img.id = "drinkImg"
             img.classList.add("thumbnail")
 
-            
-            const p = document.createElement('p')            
-            p.textContent = `Ingredients: ${allIngredients.join(", ")}`            
+            const h2 = document.createElement("h2")
+            h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
 
-            const instructions = document.createElement("p")
-            instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`      
-                  
-            
-            thirdDiv.append(p, br, instructions)
+            const selectedMood= document.createElement("p")
+            selectedMood.textContent = `Current Mood: ${mood}`        
+                            
             secondDiv.append(img, h2, selectedMood)
-            mainDiv.append(secondDiv, thirdDiv)
+            mainDiv.append(secondDiv)
             recipeSection.append(mainDiv)
         }     
 
@@ -104,3 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// const thirdDiv = document.createElement("div")
+// thirdDiv.classList.add("cardInfo")
+
+// const p = document.createElement('p')            
+// p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
+
+// const br = document.createElement("br")              
+         
+// const instructions = document.createElement("p")
+// instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`   
+
+// thirdDiv.append(p, br, instructions)
+// mainDiv.append(thirdDiv)
