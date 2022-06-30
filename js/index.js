@@ -63,14 +63,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
-            secondDiv.addEventListener("mouseover",(handleOver))
-            // secondDiv.addEventListener("mouseleave", (handleLeave))
+          
 
             const pSpan = document.createElement("p")
 
             const span = document.createElement("span")
             span.classList.add("hoverMe")
-            span.textContent = "Hover for recipe!"         
+            span.textContent = "Hover for recipe!" 
+            span.addEventListener("mouseover",(handleOver))
+            // span.addEventListener("mouseleave", (handleLeave))
+            
             
             const img = document.createElement("img")
             img.src = fullRecipe.strDrinkThumb
