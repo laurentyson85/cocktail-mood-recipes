@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
+            secondDiv.addEventListener("mouseover",(handleOver))
+            secondDiv.addEventListener("mouseleave", (handleLeave))
 
             const pSpan = document.createElement("p")
 
