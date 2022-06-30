@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('click', function (event) {      
         if (event.target.matches('.moodDropBtn')) {
+            //innerText or TextContent. pick one and know the difference
            mood = event.target.innerText
+           //change these to hiddens to be hide class name for consistancy sake. or maybe not since this is on ID
            moodBtn.hidden = true
            spiritBtn.hidden = false              
         }
@@ -30,7 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {                
                 ids = data.drinks.map(element => element.idDrink)
                 randomDrinkId = Math.floor(Math.random()*ids.length)
-                cocktailId = (ids[randomDrinkId])                   
+                cocktailId = (ids[randomDrinkId])  
+                //change to class hide instead. or maybe not since this is on ID            
                 spiritBtn.hidden = true
                 fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
                 .then(response => response.json())
@@ -60,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
-            // secondDiv.addEventListener("mouseover",(handleOver))
+            secondDiv.addEventListener("mouseover",(handleOver))
             // secondDiv.addEventListener("mouseleave", (handleLeave))
 
             const pSpan = document.createElement("p")
@@ -81,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
 
             const thirdDiv = document.createElement("div")
+            thirdDiv.id = "cardInfo"
             thirdDiv.classList.add("hide")           
 
             const p = document.createElement('p')            
@@ -98,9 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
             recipeSection.append(mainDiv)
         }     
 
-        // function handleOver(){
-
-        // }   
+        function handleOver(){
+            document.getElementById("cardInfo").classList.remove('hide')
+        }   
 
         // function handleLeave(){
 
