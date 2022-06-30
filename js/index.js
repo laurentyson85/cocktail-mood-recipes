@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const thirdDiv = document.createElement("div")
             thirdDiv.id = "cardInfo"
-            thirdDiv.classList.add("drinkInfo")           
+            thirdDiv.classList.add("hide")           
 
             const p = document.createElement('p')            
             p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -89,20 +89,40 @@ document.addEventListener("DOMContentLoaded", () => {
             const br = document.createElement("br")              
                     
             const instructions = document.createElement("p")
-            instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`   
+            instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
+            
+            const button = document.createElement("button")
+            button.classList.add("newDrink")
+            button.id = "newDrink"
+            button.textContent = "Select a new drink"            
+
+            
 
             thirdDiv.append(p, br, instructions)                
             secondDiv.append(img, selectedMood, h2)
             mainDiv.append(secondDiv, thirdDiv)
-            recipeSection.append(mainDiv)
+            recipeSection.append(mainDiv, button)
         }     
 
         function handleOver(){
             document.getElementById("cardInfo").classList.remove('hide')
+            
+
+            
         }   
 
         function handleLeave(){
             document.getElementById("cardInfo").classList.add('hide')
+
+
+
+
+        
+        }
+
+
+        function handleclick(){
+
         }
         
     })
