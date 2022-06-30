@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
+            secondDiv.id = drinkContainer
 
             const h2 = document.createElement("h2")
             h2.textContent = `Drink Name: ${fullRecipe.strDrink}`
