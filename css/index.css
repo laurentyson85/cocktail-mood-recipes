@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Arizonia');
 
-body {margin:25px;}
+
+body {
+	margin:25px;
+}
 
 #background-img{
     background-image: url("../images/new background.jpg");
@@ -11,14 +15,25 @@ body {margin:25px;}
 
 #header-section h1 {
 	font-size: 3.5em;
+	font-family: Arizonia, cursive;	
 }
 
+#favorites h2 {
+	font-size: 1.5em;
+	font-family: Arizonia, cursive;
+}
+
+#favorites {
+	position: absolute;
+	left: 20px;
+}
 
 #header-section {
 	background-color: rgb(55, 64, 60);
     background-color: rgba(0,0,0,.5);
-    color: #fff;
+    color: #fff;	
     font-weight: 700;
+	font-family: Arial;
     position: absolute;
     top: 215px;
     left: 50%;
@@ -38,7 +53,8 @@ body {margin:25px;}
 	background-color: #E60000;
  }
 
-.moodDropDownBtn {
+.moodDropDownBtn {	
+	font-family: sans-serif;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
 	padding: 16px;
@@ -48,7 +64,8 @@ body {margin:25px;}
 	border: none;	
   }
 
-.spiritDropDownBtn {
+.spiritDropDownBtn {	
+	font-family: Arial;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
 	padding: 16px;
@@ -59,11 +76,13 @@ body {margin:25px;}
   }
   
 .buttonSelectors {
+	font-family: Arial;
 	position: relative;
 	text-align: center;	
   }
   
-.dropdown-content {
+.dropdown-content {	
+	font-family: Arial;
 	display: none;
 	position: relative;	
 	text-align: center;
@@ -73,7 +92,8 @@ body {margin:25px;}
 	z-index: 1;
   }
   
-.dropdown-content a {
+.dropdown-content a {	
+	font-family: Arial;
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
@@ -81,15 +101,18 @@ body {margin:25px;}
 	text-align: center;
   }
   
-.dropdown-content a:hover {
+.dropdown-content a:hover {	
+	font-family: Arial;
 	background-color: #ddd;
 }
   
-.buttonSelectors:hover .dropdown-content {
+.buttonSelectors:hover .dropdown-content {	
+	font-family: Arial;
 	display: block;
 }
   
-.buttonSelectors:hover .dropDownBtn {
+.buttonSelectors:hover .dropDownBtn {	
+	font-family: Arial;
 	background-color: rgb(105, 130, 96);
 	color: rgba(0,0,0);
 }
@@ -103,12 +126,13 @@ body {margin:25px;}
 	border-radius: 8px;
 }
 
-#cocktail-recipe{
+#cocktail-recipe{	
+	font-family: Arial;
 	text-align: center;	
 }
 
-.container{
-		
+.container{	
+	font-family: Arial;
 	margin: 0 auto;	
 	height: auto; 
     width: auto; 
@@ -124,7 +148,8 @@ body {margin:25px;}
     
 }
 
-.expand{
+.expand{	
+	font-family: Arial;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
 	padding: 16px;
@@ -134,7 +159,8 @@ body {margin:25px;}
 	border: none;	
 }
 
-.branding {
+.branding {	
+	font-family: Arial;
 	color:rgb(105, 130, 96);
 	width: 40%;
 	left: 30%;

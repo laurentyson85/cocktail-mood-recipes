@@ -116,9 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
         //think about how to write these as arrow functions
 
         function renderFavorites(){
-            favorites.textContent = "Your Favorite Drinks"
-            
-            
+            const favoriteH2 = document.createElement("h2")
+            favoriteH2.textContent = "Your Favorite Drinks"
+            favorites.append(favoriteH2)            
         }
 
 
