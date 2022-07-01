@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
             thirdDiv.append(p, br, instructions)                
             secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
-            recipeSection.append(mainDiv, br3, button)
+            recipeSection.append(button, br3, mainDiv)
 
             renderFavorites()
         }     
