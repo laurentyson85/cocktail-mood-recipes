@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
+     let mainDiv = document.createElement("div")
+     let button = document.createElement("button")
+     let br3 = document.createElement("br")    
      let mood
      let spirit
      let ids
@@ -21,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleDropdowns(event) {                
     if (event.target.matches('.moodDropBtn')) {            
-        mood = event.target.textContent
-        //change these to hiddens to be hide class name for consistancy sake. or maybe not since this is on ID
+        mood = event.target.textContent     
         moodBtn.hidden = true
         spiritBtn.hidden = false              
     }
@@ -34,41 +36,35 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {                
             ids = data.drinks.map(element => element.idDrink)
             randomDrinkId = Math.floor(Math.random()*ids.length)
-            cocktailId = (ids[randomDrinkId])  
-            //change to class hide instead. or maybe not since this is on ID            
+            cocktailId = (ids[randomDrinkId])                     
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
             .then(data => {
-                buildIngredients(data)                             
+                buildIngredients(data)                      
                 renderCocktail()
+                newDrinkButton()
+                recipeSection.append(button, br3, mainDiv)
+
                 
             }) 
         })
     }
 
-function buildIngredients(data){
-    fullRecipe = data.drinks[0]                    
-
-    ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
-
-    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null) 
-
-    let ingredientRow  = measurements.map((row) => row.ingredients)
-    allIngredients.push(ingredientRow)
+    function buildIngredients(data){
+        fullRecipe = data.drinks[0]                 
+        ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+        measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
+                                                      
+        for (let i=0; i< measurements.length; i++){
+            let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
+            allIngredients.push(ingredientRow)          
+        }
+    }
+                    
             
-    //think about refactoring with a map                                                    
-    // for (let i=0; i< measurements.length; i++){
-    //     let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
-    //     allIngredients.push(ingredientRow)
-        
-        
-    // }
-}
-                
-        
     function renderCocktail(){
-        const mainDiv = document.createElement("div")
+        
         mainDiv.classList.add("card")
         mainDiv.id = fullRecipe.idDrink
 
@@ -108,61 +104,65 @@ function buildIngredients(data){
         
         const br2 = document.createElement("br")
 
-        const br3 = document.createElement("br")             
+                 
                 
         const instructions = document.createElement("p")
         instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
         
-        const button = document.createElement("button")
-        button.classList.add("newDrink")
-        button.id = "newDrink"
-        button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleClick))              
+        
+               
 
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)
-        recipeSection.append(button, br3, mainDiv)
+        
         favorites.hidden = false
-    } 
+        } 
+        
     
-  
 
-        //think about how to write these as arrow functions. add prevent default on everything.
+            //think about how to write these as arrow functions. add prevent default on everything.
 
-
-        function handleOver(){
-            document.getElementById("cardInfo").classList.remove('hide')        
-        }   
-
-        function handleLeave(){
-            document.getElementById("cardInfo").classList.add('hide')
-        
-        }
-
-
-        function handleClick(){
-            moodBtn.hidden = false
-            spiritBtn.hidden = true
-
-            removeRecipeChildren(recipeSection)
-
-            if (favorites.childNodes.length > 1){
-                favorites.hidden = true                
-            } else {
-                favorites.hidden = false                
-            }        
-        }
-
-        function removeRecipeChildren(recipe){
-            while (recipe.firstChild) {
-                recipe.removeChild(recipe.firstChild);
-            }
-        }
-
-
-        
+    
+    function newDrinkButton(){
+        button.classList.add("newDrink")
+        button.id = "newDrink"
+        button.textContent = "Select a new drink" 
+        button.addEventListener("click",(handleClick))       
     }
+
+
+    function handleOver(){
+        document.getElementById("cardInfo").classList.remove('hide')        
+    }   
+
+    function handleLeave(){
+        document.getElementById("cardInfo").classList.add('hide')        
+    }
+
+
+    function handleClick(){
+        moodBtn.hidden = false
+        spiritBtn.hidden = true
+
+        removeRecipeChildren(recipeSection)
+
+        if (favorites.childNodes.length > 1){
+            favorites.hidden = true                
+        } else {
+            favorites.hidden = false                
+        }        
+    }
+
+    function removeRecipeChildren(recipe){
+        while (recipe.firstChild) {
+            recipe.removeChild(recipe.firstChild);
+        }
+    }
+
+
+            
+        }
 
 })
 
