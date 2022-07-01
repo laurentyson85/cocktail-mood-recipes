@@ -137,8 +137,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         function handleClick(){
-
+            moodBtn.hidden = false
+            spiritBtn.hidden = true
+            removeRecipeChildren(recipeSection)        
         }
+
+        function removeRecipeChildren(recipe){
+            while (recipe.firstChild) {
+                recipe.removeChild(recipe.firstChild);
+            }
+        }
+
+
         
     })
 
