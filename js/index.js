@@ -127,9 +127,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         function handleClick(){
+
             moodBtn.hidden = false
             spiritBtn.hidden = true
-            removeRecipeChildren(recipeSection)        
+
+            removeRecipeChildren(recipeSection)
+
+            if (favorites.childNodes.length > 1){
+                favorites.hidden = true                
+            } else {
+                favorites.hidden = false                
+            }        
         }
 
         function removeRecipeChildren(recipe){
