@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function handleLeave(){
             document.getElementById("cardInfo").classList.add('hide')
+            //what if I did a set timeout that had the select new drink button popup!
 
 
 
