@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.id = "expand"
             btn.textContent = "expand for details"   
           
-            btn.addEventListener("mouseover",(handleOver))
+            btn.addEventListener("mouseenter",(handleOver))
             btn.addEventListener("mouseleave", (handleLeave))
             
             
