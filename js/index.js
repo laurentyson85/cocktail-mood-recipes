@@ -112,18 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
             secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(button, br3, mainDiv)
-
-            renderFavorites()
         }     
 
         //think about how to write these as arrow functions
-
-        function renderFavorites(){
-            const favoriteH2 = document.createElement("h2")
-            favoriteH2.textContent = "Your Favorite Drinks"
-            favorites.append(favoriteH2)            
-        }
-
 
 
         function handleOver(){
