@@ -152,7 +152,18 @@ body {
 	font-family: Arial;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
-	padding: 16px;
+	padding: 8px;
+	font-size: 16px;
+	border-radius: 12px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border: none;	
+}
+
+.newDrink{	
+	font-family: Arial;
+	background-color: rgb(105, 130, 96);	
+	color: rgb(255, 255, 255);
+	padding: 8px;
 	font-size: 16px;
 	border-radius: 12px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btn = document.createElement("button")
             btn.classList.add("expand")
             btn.id = "expand"
-            btn.textContent = "expand for details"   
+            btn.textContent = "Expand for details"   
           
             btn.addEventListener("mouseenter",(handleOver))
             btn.addEventListener("mouseleave", (handleLeave))
@@ -93,7 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const br = document.createElement("br")   
             
-            const br2 = document.createElement("br")           
+            const br2 = document.createElement("br")
+
+            const br3 = document.createElement("br")             
                     
             const instructions = document.createElement("p")
             instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
@@ -101,14 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const button = document.createElement("button")
             button.classList.add("newDrink")
             button.id = "newDrink"
-            button.textContent = "Select a new drink"            
+            button.textContent = "Select a new drink" 
+            button.addEventListener("click",(handleClick))           
 
             
 
             thirdDiv.append(p, br, instructions)                
             secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
-            recipeSection.append(button, mainDiv)
+            recipeSection.append(mainDiv, br3, button)
 
             renderFavorites()
         }     
@@ -133,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        function handleclick(){
+        function handleClick(){
 
         }
         
