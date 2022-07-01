@@ -40,8 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
             .then(data => {
-                buildIngredients(data)
+                buildIngredients(data)                             
                 renderCocktail()
+                
             }) 
         })
     }
@@ -103,7 +104,7 @@ function buildIngredients(data){
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
 
-        const br = document.createElement("br")   
+        const br = document.createElement("br")
         
         const br2 = document.createElement("br")
 
@@ -116,7 +117,7 @@ function buildIngredients(data){
         button.classList.add("newDrink")
         button.id = "newDrink"
         button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleClick))               
+        button.addEventListener("click",(handleClick))              
 
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
@@ -125,7 +126,7 @@ function buildIngredients(data){
         favorites.hidden = false
     } 
     
-    
+  
 
         //think about how to write these as arrow functions. add prevent default on everything.
 
