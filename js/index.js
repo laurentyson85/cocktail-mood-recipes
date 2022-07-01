@@ -14,45 +14,51 @@ document.addEventListener("DOMContentLoaded", () => {
      let measurements
      let allIngredients = []
 
-
-    document.addEventListener('click', function (event) {      
-        if (event.target.matches('.moodDropBtn')) {
-            //innerText or TextContent. pick one and know the difference
-           mood = event.target.innerText
-           //change these to hiddens to be hide class name for consistancy sake. or maybe not since this is on ID
-           moodBtn.hidden = true
-           spiritBtn.hidden = false              
-        }
     
-        if (event.target.matches('.spiritDropBtn')) {            
-            spirit = event.target.innerText            
-            fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
+        
+
+    document.addEventListener('click', (handleDropdowns))
+
+    function handleDropdowns(event) {                
+    if (event.target.matches('.moodDropBtn')) {            
+        mood = event.target.textContent
+        //change these to hiddens to be hide class name for consistancy sake. or maybe not since this is on ID
+        moodBtn.hidden = true
+        spiritBtn.hidden = false              
+    }
+
+    if (event.target.matches('.spiritDropBtn')) {            
+        spirit = event.target.innerText            
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
+        .then(response => response.json())
+        .then(data => {                
+            ids = data.drinks.map(element => element.idDrink)
+            randomDrinkId = Math.floor(Math.random()*ids.length)
+            cocktailId = (ids[randomDrinkId])  
+            //change to class hide instead. or maybe not since this is on ID            
+            spiritBtn.hidden = true
+            fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
-            .then(data => {                
-                ids = data.drinks.map(element => element.idDrink)
-                randomDrinkId = Math.floor(Math.random()*ids.length)
-                cocktailId = (ids[randomDrinkId])  
-                //change to class hide instead. or maybe not since this is on ID            
-                spiritBtn.hidden = true
-                fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
-                .then(response => response.json())
-                .then(data => {
-                    fullRecipe = data.drinks[0]                    
+            .then(data => {
+                fullRecipe = data.drinks[0]                    
 
-                    ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+                ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+            
+                measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null) 
                 
-                    measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null) 
-                    
-                    //think about refactoring with a map                                                    
-                    for (let i=0; i< measurements.length; i++){
-                        let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
-                        allIngredients.push(ingredientRow)                        
-                    }
+                //think about refactoring with a map                                                    
+                for (let i=0; i< measurements.length; i++){
+                    let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
+                    allIngredients.push(ingredientRow)                        
+                }
 
-                    renderCocktail()
-                })  
-            })       
-        }  
+                renderCocktail()
+        }  ) 
+
+    })
+
+}
+                
         
         function renderCocktail(){
             const mainDiv = document.createElement("div")
@@ -127,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         function handleClick(){
-
             moodBtn.hidden = false
             spiritBtn.hidden = true
 
@@ -148,6 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         
-    })
+    }
 
 })
