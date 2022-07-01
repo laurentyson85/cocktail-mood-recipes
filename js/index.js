@@ -63,9 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const secondDiv = document.createElement("div")
             secondDiv.classList.add("container")
             secondDiv.id = "drinkContainer"
+
+
+            const btn = document.createElement("button")
+            btn.classList.add("expand")
+            btn.id = "expand"
+            btn.textContent = "expand for details"   
           
-            secondDiv.addEventListener("mouseover",(handleOver))
-            secondDiv.addEventListener("mouseleave", (handleLeave))
+            btn.addEventListener("mouseover",(handleOver))
+            btn.addEventListener("mouseleave", (handleLeave))
             
             
             const img = document.createElement("img")
@@ -86,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const p = document.createElement('p')            
             p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
 
-            const br = document.createElement("br")              
+            const br = document.createElement("br")   
+            
+            const br2 = document.createElement("br")           
                     
             const instructions = document.createElement("p")
             instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
@@ -99,9 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
             
 
             thirdDiv.append(p, br, instructions)                
-            secondDiv.append(img, selectedMood, h2)
+            secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
-            recipeSection.append(mainDiv, button)
+            recipeSection.append(button, mainDiv)
         }     
 
         function handleOver(){
