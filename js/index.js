@@ -104,17 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
             button.classList.add("newDrink")
             button.id = "newDrink"
             button.textContent = "Select a new drink" 
-            button.addEventListener("click",(handleClick))           
-
-            
+            button.addEventListener("click",(handleClick))               
 
             thirdDiv.append(p, br, instructions)                
             secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(button, br3, mainDiv)
+            favorites.hidden = false
         }     
 
-        //think about how to write these as arrow functions
+        //think about how to write these as arrow functions. add prevent default on everything.
 
 
         function handleOver(){
