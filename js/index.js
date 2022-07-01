@@ -109,22 +109,26 @@ document.addEventListener("DOMContentLoaded", () => {
             secondDiv.append(img, selectedMood, h2, br2, btn)
             mainDiv.append(secondDiv, thirdDiv)
             recipeSection.append(button, mainDiv)
+
+            renderFavorites()
         }     
 
-        function handleOver(){
-            document.getElementById("cardInfo").classList.remove('hide')
-            
+        //think about how to write these as arrow functions
 
+        function renderFavorites(){
+            favorites.textContent = "Your Favorite Drinks"
             
+            
+        }
+
+
+
+        function handleOver(){
+            document.getElementById("cardInfo").classList.remove('hide')        
         }   
 
         function handleLeave(){
             document.getElementById("cardInfo").classList.add('hide')
-            //what if I did a set timeout that had the select new drink button popup!
-
-
-
-
         
         }
 
