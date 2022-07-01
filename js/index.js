@@ -1,6 +1,5 @@
  
-document.addEventListener("DOMContentLoaded", () => { 
-     let errorBanner = document.querySelector("#error-banner")
+document.addEventListener("DOMContentLoaded", () => {      
      let moodBtn = document.querySelector(".moodDropDownBtn")
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
