@@ -158,13 +158,28 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleLike(event){
         event.preventDefault()
         console.log(event)
-        console.log(fullRecipe)
-        console.log(event.path[1].childNodes[2].id)
-        console.log(event.path[1].childNodes[2].firstElementChild.childNodes[0].currentSrc)
-        console.log(event.path[1].childNodes[2].childNodes[1].childNodes[0].textContent)
-        console.log(event.path[1].childNodes[2].childNodes[1].childNodes[2].textContent)
-        
+        console.log(fullRecipe)     
+
+
+        fetch("http://localhost:3000/drinks", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify({
+                drinkRecipe: fullRecipe
+            })  
+        })
+        .then(response => response.json())
+        .then(data => {
+            buildIngredients(data)
+            renderCocktail(data)            
+        })        
     }
 })
 
-
+// console.log(event.path[1].childNodes[2].id)
+// console.log(event.path[1].childNodes[2].firstElementChild.childNodes[0].currentSrc)
+// console.log(event.path[1].childNodes[2].childNodes[1].childNodes[0].textContent)
+// console.log(event.path[1].childNodes[2].childNodes[1].childNodes[2].textContent)
