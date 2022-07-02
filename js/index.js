@@ -43,12 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function buildIngredients(){             
         let ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
-        let measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
-                                                      
-        for (let i=0; i< measurements.length; i++){
-            let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
-            allIngredients.push(ingredientRow)          
-            }
+        let measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)
+        
+        allIngredients = measurements.map((measurement, i) => `${measurement} ${ingredients[i]}`)                                                 
         }   
                     
             
