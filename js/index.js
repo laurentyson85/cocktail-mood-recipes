@@ -67,8 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         secondDiv.classList.add("container")        
 
         const btn = document.createElement("button")
-        btn.classList.add("expand") 
-        btn.id = incrementBtnId()   
+        btn.classList.add("expand")          
         btn.textContent = "Expand for details"   
         
         btn.addEventListener("mouseenter",(handleOver))
@@ -85,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
 
         const thirdDiv = document.createElement("div")        
-        thirdDiv.classList.add("cardInfo", "hide")           
+        thirdDiv.classList.add("cardInfo", "hide") 
+        thirdDiv.id = incrementBtnId()            
 
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -134,7 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleOver(event){
         console.log(event)
-        document.querySelector(".cardInfo").classList.remove('hide')        
+        console.log(event.path[2].childNodes[1].id)
+        // document.querySelector(".cardInfo").classList.remove('hide')        
     }   
 
     function handleLeave(){
