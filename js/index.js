@@ -134,15 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleOver(event){
         console.log(event)
-        console.log(event.path[2].childNodes[1].id)
-        let overId = event.path[2].childNodes[1].id
+        console.log(event.target.parentElement.parentElement.lastElementChild.id)
+        let overId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
     function handleLeave(event){
         console.log(event)
-        console.log(event.path[2].childNodes[1].id)
-        let leaveId = event.path[2].childNodes[1].id
+        console.log(event.target.parentElement.parentElement.lastElementChild.id)
+        let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
     }
 
