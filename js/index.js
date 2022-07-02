@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let ingredients
      let measurements
      let allIngredients = []
+     let button = document.createElement("button")
 
     
         
@@ -38,8 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
             .then(data => {
-                buildIngredients(data)                      
+                buildIngredients(data) 
+                getNewDrink()                     
                 renderCocktail()
+                
                 
             }) 
         })
@@ -66,15 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
         secondDiv.classList.add("container")
         secondDiv.id = "drinkContainer"
 
-
         const btn = document.createElement("button")
         btn.classList.add("expand")
         btn.id = "expand"
         btn.textContent = "Expand for details"   
         
         btn.addEventListener("mouseenter",(handleOver))
-        btn.addEventListener("mouseleave", (handleLeave))
-        
+        btn.addEventListener("mouseleave", (handleLeave))        
         
         const img = document.createElement("img")
         img.src = fullRecipe.strDrinkThumb
@@ -94,20 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
 
-        const br = document.createElement("br")
-        
+        const br = document.createElement("br")        
         const br2 = document.createElement("br")
-
         const br3 = document.createElement("br")             
                 
         const instructions = document.createElement("p")
         instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
         
-        const button = document.createElement("button")
-        button.classList.add("newDrink")
-        button.id = "newDrink"
-        button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleClick))              
+        
+                 
 
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
@@ -120,7 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //think about how to write these as arrow functions. add prevent default on everything.
    
-    
+    function getNewDrink(){
+        button.classList.add("newDrink")
+        button.id = "newDrink"
+        button.textContent = "Select a new drink" 
+        button.addEventListener("click",(handleClick))     
+    }
 
     function handleOver(){
         document.getElementById("cardInfo").classList.remove('hide')        
