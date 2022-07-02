@@ -132,16 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleClick))     
     }
 
-    function handleOver(event){
-        console.log(event)
-        console.log(event.target.parentElement.parentElement.lastElementChild.id)
+    function handleOver(event){        
         let overId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
-    function handleLeave(event){
-        console.log(event)
-        console.log(event.target.parentElement.parentElement.lastElementChild.id)
+    function handleLeave(event){        
         let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
     }
