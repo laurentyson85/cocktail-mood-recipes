@@ -153,10 +153,17 @@ document.addEventListener("DOMContentLoaded", () => {
         while (recipe.firstChild) {
             recipe.removeChild(recipe.firstChild);
             }
-        } 
+    } 
     
-    function handleLike(){
-
+    function handleLike(event){
+        event.preventDefault()
+        console.log(event)
+        console.log(fullRecipe)
+        console.log(event.path[1].childNodes[2].id)
+        console.log(event.path[1].childNodes[2].firstElementChild.childNodes[0].currentSrc)
+        console.log(event.path[1].childNodes[2].childNodes[1].childNodes[0].textContent)
+        console.log(event.path[1].childNodes[2].childNodes[1].childNodes[2].textContent)
+        
     }
 })
 
