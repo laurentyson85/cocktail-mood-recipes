@@ -135,11 +135,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleOver(event){
         console.log(event)
         console.log(event.path[2].childNodes[1].id)
-        // document.querySelector(".cardInfo").classList.remove('hide')        
+        let overId = event.path[2].childNodes[1].id
+        document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
-    function handleLeave(){
-        document.querySelector(".cardInfo").classList.add('hide')        
+    function handleLeave(event){
+        console.log(event)
+        console.log(event.path[2].childNodes[1].id)
+        let leaveId = event.path[2].childNodes[1].id
+        document.getElementById(`${leaveId}`).classList.add('hide')        
     }
 
     function handleClick(){
