@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
             .then(data => {
-                buildIngredients(data) 
+                fullRecipe = data.drinks[0]  
+                buildIngredients() 
                 getNewDrink()                     
                 renderCocktail()
                 }) 
@@ -47,11 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function buildIngredients(data){
-        fullRecipe = data.drinks[0]  
-
-        ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
-        measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
+    function buildIngredients(){             
+        ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+        measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
                                                       
         for (let i=0; i< measurements.length; i++){
             let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
