@@ -99,13 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const br3 = document.createElement("br")             
                 
         const instructions = document.createElement("p")
-        instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`     
+        instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
+        
+        const likeBtn = document.createElement("button")
+        likeBtn.classList.add("like-button")        
+        likeBtn.textContent = "Like ❤️"
+        likeBtn.addEventListener("click", (handleLike))
                          
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)       
 
-        recipeSection.childNodes.length > 0? favorites.append(mainDiv) : recipeSection.append(button, br3, mainDiv)
+        recipeSection.childNodes.length > 0? favorites.append(mainDiv) : recipeSection.append(button, br3, mainDiv, likeBtn)
 
         favorites.hidden = false
     } 
@@ -131,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("cardInfo").classList.add('hide')        
     }
 
-
     function handleClick(){
         moodBtn.hidden = false
         spiritBtn.hidden = true
@@ -149,7 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
         while (recipe.firstChild) {
             recipe.removeChild(recipe.firstChild);
             }
-        }         
+        } 
+    
+    function handleLike(){
+
+    }
 })
 
 
