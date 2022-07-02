@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = fullRecipe.strDrinkThumb        
         img.classList.add("thumbnail")
 
-        const h2 = document.createElement("h2")
-        h2.textContent = `you should have a "${fullRecipe.strDrink}"`
+        const drink = document.createElement("p")
+        drink.textContent = `you should have a "${fullRecipe.strDrink}"`
 
         const selectedMood= document.createElement("p")
         selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         likeBtn.addEventListener("click", (handleLike))
                          
         thirdDiv.append(p, br, instructions)                
-        secondDiv.append(img, selectedMood, h2, br2, btn)
+        secondDiv.append(img, selectedMood, drink, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)       
 
         recipeSection.childNodes.length > 0? favorites.append(mainDiv) : recipeSection.append(button, br3, mainDiv, likeBtn)
