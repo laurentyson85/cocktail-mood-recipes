@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mood = event.target.textContent     
         moodBtn.hidden = true
         spiritBtn.hidden = false              
-    }
+        }
 
     if (event.target.matches('.spiritDropBtn')) {            
         spirit = event.target.innerText            
@@ -42,22 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 buildIngredients(data) 
                 getNewDrink()                     
                 renderCocktail()
-                
-                
-            }) 
-        })
+                }) 
+            })  
+        }
     }
 
     function buildIngredients(data){
-        fullRecipe = data.drinks[0]                 
+        fullRecipe = data.drinks[0]  
+
         ingredients = Object.entries(data.drinks[0]).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
         measurements = Object.entries(data.drinks[0]).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
                                                       
         for (let i=0; i< measurements.length; i++){
             let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
             allIngredients.push(ingredientRow)          
-        }
-    }
+            }
+        }   
                     
             
     function renderCocktail(){
@@ -100,21 +100,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const br3 = document.createElement("br")             
                 
         const instructions = document.createElement("p")
-        instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
-        
-        
-                 
-
+        instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`     
+                         
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
-        mainDiv.append(secondDiv, thirdDiv)
-        recipeSection.append(button, br3, mainDiv)
+        mainDiv.append(secondDiv, thirdDiv)       
+
+        recipeSection.childNodes.length > 0? favorites.append(mainDiv) : recipeSection.append(button, br3, mainDiv)
+
         favorites.hidden = false
-        } 
+    } 
         
     
 
-            //think about how to write these as arrow functions. add prevent default on everything.
+    //think about how to write these as arrow functions. add prevent default on everything.
+
+
    
     function getNewDrink(){
         button.classList.add("newDrink")
@@ -148,13 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function removeRecipeChildren(recipe){
         while (recipe.firstChild) {
             recipe.removeChild(recipe.firstChild);
-        }
-    }
-
-
-            
-        }
-
+            }
+        }         
 })
 
 
