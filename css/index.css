@@ -20,7 +20,8 @@ body {
 
 #favorites h2 {
 	font-size: 1.5em;
-	font-family: Arizonia, cursive;
+	font-family: Arial;
+	color: rgb(156, 192, 143);
 }
 
 #favorites {
