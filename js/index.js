@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
      let mood
-     let spirit
-     let ids
      let randomDrinkId
      let cocktailId
      let fullRecipe
@@ -28,11 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     if (event.target.matches('.spiritDropBtn')) {            
-        spirit = event.target.textContent          
+        let spirit = event.target.textContent          
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
         .then(response => response.json())
         .then(data => {                
-            ids = data.drinks.map(element => element.idDrink)
+            let ids = data.drinks.map(element => element.idDrink)
             randomDrinkId = Math.floor(Math.random()*ids.length)
             cocktailId = (ids[randomDrinkId])                     
             spiritBtn.hidden = true
