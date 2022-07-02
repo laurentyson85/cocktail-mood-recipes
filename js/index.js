@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {                
             let ids = data.drinks.map(element => element.idDrink)
             let randomDrinkId = Math.floor(Math.random()*ids.length)
-            cocktailId = (ids[randomDrinkId])                     
+            let cocktailId = (ids[randomDrinkId])                     
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
