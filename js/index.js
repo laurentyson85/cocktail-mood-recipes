@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
             
     function renderCocktail(){
         const mainDiv = document.createElement("div")
-        mainDiv.classList.add("card")
-        mainDiv.id = fullRecipe.idDrink
+        mainDiv.classList.add("card")        
 
         const secondDiv = document.createElement("div")
         secondDiv.classList.add("container")        
 
         const btn = document.createElement("button")
-        btn.classList.add("expand")        
+        btn.classList.add("expand") 
+        btn.id = getRandomId(1000)       
         btn.textContent = "Expand for details"   
         
         btn.addEventListener("mouseenter",(handleOver))
@@ -116,7 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //think about how to write these as arrow functions. add prevent default on everything.
 
 
-   
+    
+    function getRandomId(max){
+        return Math.floor(Math.random() * max)
+    }
+
+
     function getNewDrink(){
         button.classList.add("newDrink")
         button.id = "newDrink"
