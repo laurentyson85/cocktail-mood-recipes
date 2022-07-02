@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
-     let mood
-     let randomDrinkId
+     let mood     
      let cocktailId
      let fullRecipe
      let ingredients
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {                
             let ids = data.drinks.map(element => element.idDrink)
-            randomDrinkId = Math.floor(Math.random()*ids.length)
+            let randomDrinkId = Math.floor(Math.random()*ids.length)
             cocktailId = (ids[randomDrinkId])                     
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
