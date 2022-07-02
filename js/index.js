@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let moodBtn = document.querySelector(".moodDropDownBtn")
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
-     let favorites = document.querySelector("#favorites")
+     let favorites = document.querySelector(".drinkFavorites")
      let mood
      let spirit
      let ids
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     if (event.target.matches('.spiritDropBtn')) {            
-        spirit = event.target.innerText            
+        spirit = event.target.textContent          
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
         .then(response => response.json())
         .then(data => {                
@@ -65,20 +65,17 @@ document.addEventListener("DOMContentLoaded", () => {
         mainDiv.id = fullRecipe.idDrink
 
         const secondDiv = document.createElement("div")
-        secondDiv.classList.add("container")
-        secondDiv.id = "drinkContainer"
+        secondDiv.classList.add("container")        
 
         const btn = document.createElement("button")
-        btn.classList.add("expand")
-        btn.id = "expand"
+        btn.classList.add("expand")        
         btn.textContent = "Expand for details"   
         
         btn.addEventListener("mouseenter",(handleOver))
         btn.addEventListener("mouseleave", (handleLeave))        
         
         const img = document.createElement("img")
-        img.src = fullRecipe.strDrinkThumb
-        img.id = "drinkImg"
+        img.src = fullRecipe.strDrinkThumb        
         img.classList.add("thumbnail")
 
         const h2 = document.createElement("h2")
@@ -87,9 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedMood= document.createElement("p")
         selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
 
-        const thirdDiv = document.createElement("div")
-        thirdDiv.id = "cardInfo"
-        thirdDiv.classList.add("hide")           
+        const thirdDiv = document.createElement("div")        
+        thirdDiv.classList.add("cardInfo", "hide")           
 
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -128,12 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleClick))     
     }
 
-    function handleOver(){
-        document.getElementById("cardInfo").classList.remove('hide')        
+    function handleOver(event){
+        console.log(event)
+        document.querySelector(".cardInfo").classList.remove('hide')        
     }   
 
     function handleLeave(){
-        document.getElementById("cardInfo").classList.add('hide')        
+        document.querySelector(".cardInfo").classList.add('hide')        
     }
 
     function handleClick(){
