@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
-     let mainDiv = document.createElement("div")
-     let button = document.createElement("button")
-     let br3 = document.createElement("br")    
      let mood
      let spirit
      let ids
@@ -43,9 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 buildIngredients(data)                      
                 renderCocktail()
-                newDrinkButton()
-                recipeSection.append(button, br3, mainDiv)
-
                 
             }) 
         })
@@ -64,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
             
     function renderCocktail(){
-        
+        const mainDiv = document.createElement("div")
         mainDiv.classList.add("card")
         mainDiv.id = fullRecipe.idDrink
 
@@ -104,33 +98,29 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const br2 = document.createElement("br")
 
-                 
+        const br3 = document.createElement("br")             
                 
         const instructions = document.createElement("p")
         instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
         
-        
-               
+        const button = document.createElement("button")
+        button.classList.add("newDrink")
+        button.id = "newDrink"
+        button.textContent = "Select a new drink" 
+        button.addEventListener("click",(handleClick))              
 
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, h2, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)
-        
+        recipeSection.append(button, br3, mainDiv)
         favorites.hidden = false
         } 
         
     
 
             //think about how to write these as arrow functions. add prevent default on everything.
-
+   
     
-    function newDrinkButton(){
-        button.classList.add("newDrink")
-        button.id = "newDrink"
-        button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleClick))       
-    }
-
 
     function handleOver(){
         document.getElementById("cardInfo").classList.remove('hide')        
