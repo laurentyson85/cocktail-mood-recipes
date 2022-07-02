@@ -180,5 +180,5 @@ body {
 	left: 30%;
 	right: 30%;
 	text-align: center;
-	position: relative;
+	position: fixed;
 }
