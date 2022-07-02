@@ -143,9 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
         removeRecipeChildren(recipeSection)
 
         if (favorites.childNodes.length > 1){
-            favorites.hidden = true                
-        } else {
             favorites.hidden = false                
+        } else {
+            favorites.hidden = true                
         }        
     }
 
@@ -179,7 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-// console.log(event.path[1].childNodes[2].id)
-// console.log(event.path[1].childNodes[2].firstElementChild.childNodes[0].currentSrc)
-// console.log(event.path[1].childNodes[2].childNodes[1].childNodes[0].textContent)
-// console.log(event.path[1].childNodes[2].childNodes[1].childNodes[2].textContent)
+
