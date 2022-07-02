@@ -4,11 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
-     let mood     
-     let cocktailId
-     let fullRecipe
-     let ingredients
-     let measurements
+     let mood   
+     let fullRecipe     
      let allIngredients = []
      let button = document.createElement("button")
 
@@ -46,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildIngredients(){             
-        ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
-        measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
+        let ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+        let measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)             
                                                       
         for (let i=0; i< measurements.length; i++){
             let ingredientRow = `${measurements[i]} ${ingredients[i]}`                     
