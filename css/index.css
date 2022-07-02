@@ -168,5 +168,9 @@ body {
 	left: 20px;
 }
 
-
+.branding { 
+    text-align: center;
+	color: rgb(156, 192, 143);
+	font-family: Arial;
+}
 
