@@ -148,11 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         removeRecipeChildren(recipeSection)
 
-        if (favorites.childNodes.length > 1){
+        if (favorites.childNodes.length > 5){
             favorites.hidden = false                
         } else {
             favorites.hidden = true                
-        }        
+        }
+        console.log(favorites.childNodes.length)        
     }
 
     function removeRecipeChildren(recipe){
