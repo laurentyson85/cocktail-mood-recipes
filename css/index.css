@@ -24,7 +24,7 @@ body {
 	color: rgb(156, 192, 143);
 }
 
-.drinkFavorites {
+#favorites {
 	position: absolute;
 	left: 20px;
 }

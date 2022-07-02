@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let moodBtn = document.querySelector(".moodDropDownBtn")
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
-     let favorites = document.querySelector(".drinkFavorites")
+     let favorites = document.querySelector("#favorites")
      let mood
      let spirit
      let ids
