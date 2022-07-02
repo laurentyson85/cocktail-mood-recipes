@@ -178,8 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })  
         })
         .then(response => response.json())
-        .then(data => {
-            buildIngredients(data)
+        .then(data => {            
             renderCocktail(data)            
         })        
     }
