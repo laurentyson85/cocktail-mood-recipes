@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btn = document.createElement("button")
         btn.classList.add("expand") 
-        btn.id = getRandomId(1000)       
+        btn.id = incrementBtnId()   
         btn.textContent = "Expand for details"   
         
         btn.addEventListener("mouseenter",(handleOver))
@@ -117,9 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     
-    function getRandomId(max){
-        return Math.floor(Math.random() * max)
-    }
+    let incrementBtnId = (function(count) {
+        return function() {
+          count += 1;
+          return count;
+        }
+      }(0))
 
 
     function getNewDrink(){
