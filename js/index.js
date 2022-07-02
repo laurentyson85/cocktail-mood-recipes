@@ -4,17 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
      let spiritBtn = document.querySelector(".spiritDropDownBtn")
      let recipeSection = document.querySelector("#cocktail-recipe")
      let favorites = document.querySelector("#favorites")
+     let button = document.createElement("button")
      let mood   
      let fullRecipe     
-     let allIngredients = []
-     let button = document.createElement("button")
-
+     let allIngredients = []   
     
-        
 
     document.addEventListener('click', (handleDropdowns))
 
-    function handleDropdowns(event) {                
+    function handleDropdowns(event) {
+        event.preventDefault()                
     if (event.target.matches('.moodDropBtn')) {            
         mood = event.target.textContent     
         moodBtn.hidden = true
@@ -126,17 +125,20 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleClick))     
     }
 
-    function handleOver(event){        
+    function handleOver(event){    
+        event.preventDefault()         
         let overId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
-    function handleLeave(event){        
+    function handleLeave(event){  
+        event.preventDefault()        
         let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
     }
 
-    function handleClick(){
+    function handleClick(event){
+        event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true
 
@@ -147,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             favorites.hidden = true                
         }
-        console.log(favorites.childNodes.length)        
+             
     }
 
     function removeRecipeChildren(recipe){
@@ -157,10 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
     
     function handleLike(event){
-        event.preventDefault()
-        console.log(event)
-        console.log(fullRecipe)     
-
+        event.preventDefault()    
 
         fetch("http://localhost:3000/drinks", {
             method: "POST",
