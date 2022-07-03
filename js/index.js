@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
         
     
-    let generateNewDivId = (function(count) {
+    const generateNewDivId = (function(count) {
         return function() {
           count += 1;
           return count;
@@ -119,14 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }(0)) //be able to explain this closure better
 
 
-    let getNewDrink = () => {
+    const getNewDrink = () => {
         button.classList.add("newDrink")
         button.id = "newDrink"
         button.textContent = "Select a new drink" 
         button.addEventListener("click",(handleGetNewDrink))     
     }
 
-    let handleGetNewDrink = (event) => {
+    const handleGetNewDrink = (event) => {
         event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true        
@@ -134,25 +134,25 @@ document.addEventListener("DOMContentLoaded", () => {
         removeExisitingRecipe(recipeSection)                   
     }
 
-    let removeExisitingRecipe = (recipe)=> {        
+    const removeExisitingRecipe = (recipe)=> {        
         while (recipe.firstChild) {
             recipe.removeChild(recipe.firstChild);
             }
     } 
 
-    let handleMouseEnter = (event) => {    
+    const handleMouseEnter = (event) => {    
         event.preventDefault()            
         let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.remove('hide')        
     }   
 
-    let handleMouseLeave = (event) => {  
+    const handleMouseLeave = (event) => {  
         event.preventDefault()              
         let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.add('hide')        
     } 
     
-    let handleLikeCocktail = (event) => {
+    const handleLikeCocktail = (event) => {
         event.preventDefault()  
         fetch("http://localhost:3000/drinks", {
             method: "POST",
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })           
     }
 
-    let handleDeleteCocktail = (event) => {
+    const handleDeleteCocktail = (event) => {
         event.preventDefault()  
         let deleteElement = event.target.parentElement.id
         document.getElementById(`${deleteElement}`).remove()
@@ -186,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => console.log(data))        
     }
-
 })
 
 
