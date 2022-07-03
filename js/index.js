@@ -168,17 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             favoritesId = data.id              
-            renderCocktail(data) 
-            console.log(data.id)
-                     
+            renderCocktail(data)                     
         })        
     }
 
     let handleDeleteCocktail = (event) => {
         event.preventDefault()  
         let deleteElement = event.target.parentElement.id
-
         document.getElementById(`${deleteElement}`).remove()
+
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
             headers: {
