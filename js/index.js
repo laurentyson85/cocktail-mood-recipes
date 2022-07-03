@@ -116,13 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleClick))     
     }
 
-    function handleMouseEnter(event){    
+    let handleMouseEnter = (event) => {    
         event.preventDefault()         
         let overId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
-    function handleMouseLeave(event){  
+    let handleMouseLeave = (event) => {  
         event.preventDefault()        
         let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
