@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
 
-        const br = document.createElement("br")        
+        const br = document.createElement("br")     
         const br2 = document.createElement("br")
         const br3 = document.createElement("br")             
                 
@@ -101,11 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
         
     
-
-    //think about how to write these as arrow functions. add prevent default on everything.
-
-
-    
     let incrementNewId = (function(count) {
         return function() {
           count += 1;
@@ -114,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }(0)) //be able to explain this closure better
 
 
-    function getNewDrink(){
+    let getNewDrink = () => {
         button.classList.add("newDrink")
         button.id = "newDrink"
         button.textContent = "Select a new drink" 
@@ -144,8 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             favorites.hidden = false                
         } else {
             favorites.hidden = true                
-        }
-             
+        }             
     }
 
     function removeRecipeChildren(recipe){
