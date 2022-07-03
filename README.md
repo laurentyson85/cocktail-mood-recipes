@@ -2,7 +2,7 @@
 
 
 ## Description
-Cocktail Mood Recipes is a JavaScript application that leverages DOM manipulation allowing users to select their mood and spirit to return a cocktail recipe. I built this application because, as a kid, I loved mood rings, and as an adult, I love cocktails. Check out this three-minute video walkthrough of my app and my blog post about the project; in the blog, I delve into some cool features!
+Cocktail Mood Recipes is a JavaScript application that leverages DOM manipulation allowing users to select their mood and spirit to return a cocktail recipe. I built this application because, as a kid, I loved mood rings, and as an adult, I love cocktails. Check out this three-minute video walkthrough of my app and [my blog post](https://dev.to/laurentyson85/utilizing-a-nested-get-request-3dj9) about the project; in the blog, I delve into some cool features!
 
 
 ## Installation
