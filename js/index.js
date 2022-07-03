@@ -1,10 +1,10 @@
  
 document.addEventListener("DOMContentLoaded", () => {      
-     let moodBtn = document.querySelector(".moodDropDownBtn")
-     let spiritBtn = document.querySelector(".spiritDropDownBtn")
-     let recipeSection = document.querySelector("#cocktail-recipe")
-     let favorites = document.querySelector("#favorites")
-     let button = document.createElement("button")
+     const moodBtn = document.querySelector(".moodDropDownBtn")
+     const spiritBtn = document.querySelector(".spiritDropDownBtn")
+     const recipeSection = document.querySelector("#cocktail-recipe")
+     const favorites = document.querySelector("#favorites")
+     const button = document.createElement("button")
      let mood   
      let fullRecipe     
      let allIngredients = [] 
@@ -20,15 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         moodBtn.hidden = true
         spiritBtn.hidden = false              
         }
-
     if (event.target.matches('.spiritDropBtn')) {            
-        let spirit = event.target.textContent          
+        const spirit = event.target.textContent          
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
         .then(response => response.json())
         .then(data => {                
-            let ids = data.drinks.map(element => element.idDrink)
-            let randomDrinkId = Math.floor(Math.random()*ids.length)
-            let cocktailId = (ids[randomDrinkId]) //be able to explain this better                    
+            const ids = data.drinks.map(element => element.idDrink)
+            const randomDrinkId = Math.floor(Math.random()*ids.length)
+            const cocktailId = (ids[randomDrinkId]) //be able to explain this better                    
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
@@ -43,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildIngredients(){             
-        let ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
-        let measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)
+        const ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
+        const measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)
         
         allIngredients = measurements.map((measurement, i) => `${measurement} ${ingredients[i]}`)                                                 
         }   
