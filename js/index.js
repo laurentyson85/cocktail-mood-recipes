@@ -113,8 +113,22 @@ document.addEventListener("DOMContentLoaded", () => {
         button.classList.add("newDrink")
         button.id = "newDrink"
         button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleClick))     
+        button.addEventListener("click",(handleGetNewDrink))     
     }
+
+    let handleGetNewDrink = (event) => {
+        event.preventDefault()  
+        moodBtn.hidden = false
+        spiritBtn.hidden = true
+        removeExisitingRecipe(recipeSection)
+        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true                   
+    }
+
+    let removeExisitingRecipe = (recipe)=> {
+        while (recipe.firstChild) {
+            recipe.removeChild(recipe.firstChild);
+            }
+    } 
 
     let handleMouseEnter = (event) => {    
         event.preventDefault()         
@@ -126,25 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()        
         let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
-    }
-
-    function handleClick(event){
-        event.preventDefault()  
-        moodBtn.hidden = false
-        spiritBtn.hidden = true
-        removeRecipeChildren(recipeSection)
-        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true                   
-    }
-
-    function removeRecipeChildren(recipe){
-        while (recipe.firstChild) {
-            recipe.removeChild(recipe.firstChild);
-            }
     } 
     
     function handleLike(event){
-        event.preventDefault()    
-
+        event.preventDefault()  
         fetch("http://localhost:3000/drinks", {
             method: "POST",
             headers: {
