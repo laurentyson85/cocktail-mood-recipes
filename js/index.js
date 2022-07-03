@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const thirdDiv = document.createElement("div")        
         thirdDiv.classList.add("cardInfo", "hide") 
-        thirdDiv.id = incrementNewId()            
+        thirdDiv.id = generateNewDivId()            
 
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
         
     
-    let incrementNewId = (function(count) {
+    let generateNewDivId = (function(count) {
         return function() {
           count += 1;
           return count;
@@ -132,14 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let handleMouseEnter = (event) => {    
         event.preventDefault()         
-        let overId = event.target.parentElement.parentElement.lastElementChild.id
-        document.getElementById(`${overId}`).classList.remove('hide')        
+        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id
+        document.getElementById(`${generatedDivId}`).classList.remove('hide')        
     }   
 
     let handleMouseLeave = (event) => {  
         event.preventDefault()        
-        let leaveId = event.target.parentElement.parentElement.lastElementChild.id
-        document.getElementById(`${leaveId}`).classList.add('hide')        
+        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id
+        document.getElementById(`${generatedDivId}`).classList.add('hide')        
     } 
     
     function handleLike(event){
