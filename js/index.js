@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {                
             let ids = data.drinks.map(element => element.idDrink)
             let randomDrinkId = Math.floor(Math.random()*ids.length)
-            let cocktailId = (ids[randomDrinkId])                     
+            let cocktailId = (ids[randomDrinkId]) //be able to explain this better                    
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
@@ -58,10 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btn = document.createElement("button")
         btn.classList.add("expand")          
-        btn.textContent = "Expand for details"   
-        
-        btn.addEventListener("mouseenter",(handleOver))
-        btn.addEventListener("mouseleave", (handleLeave))        
+        btn.textContent = "Expand for details"        
+        btn.addEventListener("mouseenter",(handleMouseEnter))
+        btn.addEventListener("mouseleave", (handleMouseLeave))        
         
         const img = document.createElement("img")
         img.src = fullRecipe.strDrinkThumb        
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const thirdDiv = document.createElement("div")        
         thirdDiv.classList.add("cardInfo", "hide") 
-        thirdDiv.id = incrementBtnId()            
+        thirdDiv.id = incrementNewId()            
 
         const p = document.createElement('p')            
         p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
@@ -107,12 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     
-    let incrementBtnId = (function(count) {
+    let incrementNewId = (function(count) {
         return function() {
           count += 1;
           return count;
         }
-      }(0))
+      }(0)) //be able to explain this closure better
 
 
     function getNewDrink(){
@@ -122,13 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleClick))     
     }
 
-    function handleOver(event){    
+    function handleMouseEnter(event){    
         event.preventDefault()         
         let overId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${overId}`).classList.remove('hide')        
     }   
 
-    function handleLeave(event){  
+    function handleMouseLeave(event){  
         event.preventDefault()        
         let leaveId = event.target.parentElement.parentElement.lastElementChild.id
         document.getElementById(`${leaveId}`).classList.add('hide')        
