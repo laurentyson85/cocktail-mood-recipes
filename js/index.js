@@ -89,13 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const likeBtn = document.createElement("button")
         likeBtn.classList.add("like-button")        
         likeBtn.textContent = "Like ❤️"
-        likeBtn.addEventListener("click", (handleLike))
+        likeBtn.addEventListener("click", (handleLikeCocktail))
+
+        const deleteBtn = document.createElement("button")
+        deleteBtn.classList.add("delete-button")        
+        deleteBtn.textContent = "Delete ❌"
+        deleteBtn.addEventListener("click", (handleDeleteCocktail))
                          
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, drink, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)       
 
-        recipeSection.childNodes.length > 0? favorites.append(mainDiv) : recipeSection.append(button, br3, mainDiv, likeBtn)
+        recipeSection.childNodes.length > 0? favorites.append(mainDiv, deleteBtn): recipeSection.append(button, br3, mainDiv, likeBtn)
 
         favorites.hidden = false
     } 
@@ -119,9 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let handleGetNewDrink = (event) => {
         event.preventDefault()  
         moodBtn.hidden = false
-        spiritBtn.hidden = true
-        removeExisitingRecipe(recipeSection)
-        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true                   
+        spiritBtn.hidden = true        
+        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true
+        removeExisitingRecipe(recipeSection)                   
     }
 
     let removeExisitingRecipe = (recipe)=> {
@@ -142,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById(`${generatedDivId}`).classList.add('hide')        
     } 
     
-    function handleLike(event){
+    let handleLikeCocktail = (event) => {
         event.preventDefault()  
         fetch("http://localhost:3000/drinks", {
             method: "POST",
@@ -156,9 +161,16 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => {            
-            renderCocktail(data)            
+            renderCocktail(data) 
+            console.log(data)           
         })        
     }
+
+    let handleDeleteCocktail = (event) => {
+        event.preventDefault()  
+        console.log (event)
+    }
+
 })
 
 
