@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {            
             renderCocktail(data) 
-            console.log(data)           
+            console.log(data.id)           
         })        
     }
 
