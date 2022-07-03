@@ -43,11 +43,7 @@ body {
 
 .hide {
 	display: none;
- }
-
-.alert{
-	background-color: #E60000;
- }
+}
 
 .moodDropDownBtn {	
 	font-family: sans-serif;
@@ -58,7 +54,7 @@ body {
 	border-radius: 12px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	border: none;	
-  }
+}
 
 .spiritDropDownBtn {	
 	font-family: Arial;
@@ -69,13 +65,13 @@ body {
 	border-radius: 12px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	border: none;	
-  }
+}
   
 .buttonSelectors {
 	font-family: Arial;
 	position: relative;
 	text-align: center;	
-  }
+}
   
 .dropdown-content {	
 	font-family: Arial;
@@ -86,7 +82,7 @@ body {
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
-  }
+}
   
 .dropdown-content a {	
 	font-family: Arial;
@@ -95,7 +91,7 @@ body {
 	text-decoration: none;
 	display: block;	
 	text-align: center;
-  }
+}
   
 .dropdown-content a:hover {	
 	font-family: Arial;
@@ -113,7 +109,7 @@ body {
 	color: rgba(0,0,0);
 }
 
-.thumbnail{
+.thumbnail {
 	height: auto; 
     width: auto; 
     max-width: 300px; 
@@ -121,13 +117,14 @@ body {
 	position: center;
 	border-radius: 8px;
 }
+
 #favorites,
-#cocktail-recipe{	
+#cocktail-recipe {	
 	font-family: Arial;
 	text-align: center;	
 }
 
-.container{	
+.container {	
 	font-family: Arial;
 	margin: 0 auto;	
 	height: auto; 
@@ -139,12 +136,10 @@ body {
 	margin-bottom: 25px;
 	text-align: center;
 	padding: 10px 20px;
-	border-radius: 8px;
-	
-    
+	border-radius: 8px;    
 }
 
-.expand{	
+.expand {	
 	font-family: Arial;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
@@ -155,7 +150,7 @@ body {
 	border: none;	
 }
 
-.newDrink{	
+.newDrink {	
 	font-family: Arial;
 	background-color: rgb(156, 192, 143);	
 	color: rgb(255, 255, 255);
