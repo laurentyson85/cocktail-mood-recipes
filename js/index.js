@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let deleteElement = event.target.parentElement.id
 
         document.getElementById(`${deleteElement}`).remove()
-        fetch(`http://localhost:3000/drinks/${favoritesId}`, {
+        fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
