@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
         .then(response => response.json())
         .then(data => {                
-            const ids = data.drinks.map(element => element.idDrink)
-            const randomDrinkId = Math.floor(Math.random()*ids.length)            
-            const cocktailId = (ids[randomDrinkId])                 
+            const ids = data.drinks.map(element => element.idDrink)            
+            const randomDrinkKey = Math.floor(Math.random()*ids.length)                   
+            const cocktailId = (ids[randomDrinkKey])                          
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
@@ -85,7 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const br = document.createElement("br")     
         const br2 = document.createElement("br")
-        const br3 = document.createElement("br")             
+        const br3 = document.createElement("br") 
+        const br4 = document.createElement("br")
+        const br5 = document.createElement("br")           
                 
         const instructions = document.createElement("p")
         instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
@@ -103,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, drink, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)  
-        favoritesDiv.append(mainDiv, deleteBtn)   
+        favoritesDiv.append(mainDiv, br4, deleteBtn)   
 
-        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, likeBtn)
+        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv, br5): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
 
         favorites.hidden = false
     } 
