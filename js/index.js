@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 buildIngredients() 
                 getNewDrink()                     
                 renderCocktail()
-                }) 
-            })  
+                })                 
+            })
         }
     }
 
@@ -142,14 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
 
     let handleMouseEnter = (event) => {    
-        event.preventDefault()         
-        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id
+        event.preventDefault()            
+        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.remove('hide')        
     }   
 
     let handleMouseLeave = (event) => {  
-        event.preventDefault()        
-        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id
+        event.preventDefault()              
+        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.add('hide')        
     } 
     
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             favoritesId = data.id              
             renderCocktail(data)                     
-        })        
+        })           
     }
 
     let handleDeleteCocktail = (event) => {
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }             
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data))        
     }
 
 })
