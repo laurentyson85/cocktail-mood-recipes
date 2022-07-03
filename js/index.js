@@ -132,14 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true
-
         removeRecipeChildren(recipeSection)
-
-        if (favorites.childNodes.length > 5){
-            favorites.hidden = false                
-        } else {
-            favorites.hidden = true                
-        }             
+        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true                   
     }
 
     function removeRecipeChildren(recipe){
