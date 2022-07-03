@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeExisitingRecipe(recipeSection)                   
     }
 
-    let removeExisitingRecipe = (recipe)=> {
+    let removeExisitingRecipe = (recipe)=> {        
         while (recipe.firstChild) {
             recipe.removeChild(recipe.firstChild);
             }
