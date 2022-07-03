@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true        
-        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true
+        favorites.childNodes.length > 6 ? favorites.hidden = false: favorites.hidden = true
         removeExisitingRecipe(recipeSection)                   
     }
 
@@ -144,14 +144,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleMouseEnter = (event) => {    
         event.preventDefault()            
-        const generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
-        document.getElementById(`${generatedDivId}`).classList.remove('hide')        
+        const getDivId = event.target.parentElement.parentElement.lastElementChild.id        
+        document.getElementById(`${getDivId}`).classList.remove('hide')        
     }   
 
     const handleMouseLeave = (event) => {  
         event.preventDefault()              
-        const generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
-        document.getElementById(`${generatedDivId}`).classList.add('hide')        
+        const getDivId = event.target.parentElement.parentElement.lastElementChild.id        
+        document.getElementById(`${getDivId}`).classList.add('hide')        
     } 
     
     const handleLikeCocktail = (event) => {
@@ -177,7 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()  
         const deleteElement = event.target.parentElement.id
         document.getElementById(`${deleteElement}`).remove()
-
+        favorites.childNodes.length > 6 ? favorites.hidden = false: favorites.hidden = true
+        
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
             headers: {
