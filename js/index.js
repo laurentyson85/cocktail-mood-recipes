@@ -176,6 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let handleDeleteCocktail = (event) => {
         event.preventDefault()  
         console.log (event)
+        console.log(event.target.parentElement.className)
+
     }
 
 })
