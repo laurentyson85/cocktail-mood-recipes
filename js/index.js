@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
      let mood   
      let fullRecipe     
      let allIngredients = [] 
-     let favoritesClass   
+     let favoritesId  
     
 
     document.addEventListener('click', (handleDropdowns))
@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
     function renderCocktail(){
         const favoritesDiv = document.createElement("div")
-        favoritesDiv.classList.add(favoritesClass)
+        favoritesDiv.id = favoritesId
+        favoritesDiv.classList.add("favorite")
 
         const mainDiv = document.createElement("div")
         mainDiv.classList.add("card")        
@@ -166,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => {
-            favoritesClass = data.id              
+            favoritesId = data.id              
             renderCocktail(data) 
             console.log(data.id)
                      
@@ -176,7 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let handleDeleteCocktail = (event) => {
         event.preventDefault()  
         console.log (event)
-        console.log(event.target.parentElement.className)
+        console.log(event.target.parentElement.id)
+        let deleteElement = event.target.parentElement.id
+        document.getElementById(`${deleteElement}`).remove()
 
     }
 
