@@ -81,8 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
         thirdDiv.id = generateNewDivId()            
 
         const p = document.createElement('p')            
-        p.textContent = `Ingredients: ${allIngredients.join(", ")}`
-       
+        p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
+
+        const br = document.createElement("br")     
+        const br2 = document.createElement("br")
+        const br3 = document.createElement("br") 
+        const br4 = document.createElement("br")                 
+                
         const instructions = document.createElement("p")
         instructions.textContent = `Instructions: ${fullRecipe.strInstructions}`  
         
@@ -96,12 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtn.textContent = "Delete ❌"
         deleteBtn.addEventListener("click", (handleDeleteCocktail))
                          
-        thirdDiv.append(p, instructions)                
-        secondDiv.append(img, selectedMood, drink, btn)
+        thirdDiv.append(p, br, instructions)                
+        secondDiv.append(img, selectedMood, drink, br2, btn)
         mainDiv.append(secondDiv, thirdDiv)  
-        favoritesDiv.append(mainDiv, deleteBtn)   
+        favoritesDiv.append(mainDiv, br4, deleteBtn)   
 
-        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, mainDiv, likeBtn)
+        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
 
         favorites.hidden = false
     } 
@@ -126,7 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true        
-        favorites.childNodes.length > 5 ? favorites.hidden = false: favorites.hidden = true
+        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true
+        console.log(favorites.childNodes.length)
         removeExisitingRecipe(recipeSection)                   
     }
 
@@ -164,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             favoritesId = data.id              
             renderCocktail(data)                     
-        })           
+        })
+        console.log(favorites.childNodes.length)           
     }
 
     const handleDeleteCocktail = (event) => {
@@ -181,9 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => console.log(data))
-        
-        favorites.childNodes.length > 6 ? favorites.hidden = false: favorites.hidden = true
-    }
+        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true
+    } 
 })
 
 
