@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
      let button = document.createElement("button")
      let mood   
      let fullRecipe     
-     let allIngredients = []   
+     let allIngredients = [] 
+     let favoritesClass   
     
 
     document.addEventListener('click', (handleDropdowns))
@@ -50,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     
             
     function renderCocktail(){
+        const favoritesDiv = document.createElement("div")
+        favoritesDiv.classList.add(favoritesClass)
+
         const mainDiv = document.createElement("div")
         mainDiv.classList.add("card")        
 
@@ -98,9 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
                          
         thirdDiv.append(p, br, instructions)                
         secondDiv.append(img, selectedMood, drink, br2, btn)
-        mainDiv.append(secondDiv, thirdDiv)       
+        mainDiv.append(secondDiv, thirdDiv)  
+        favoritesDiv.append(mainDiv, deleteBtn)   
 
-        recipeSection.childNodes.length > 0? favorites.append(mainDiv, deleteBtn): recipeSection.append(button, br3, mainDiv, likeBtn)
+        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, likeBtn)
 
         favorites.hidden = false
     } 
@@ -160,9 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
             })  
         })
         .then(response => response.json())
-        .then(data => {            
+        .then(data => {
+            favoritesClass = data.id              
             renderCocktail(data) 
-            console.log(data.id)           
+            console.log(data.id)
+                     
         })        
     }
 
