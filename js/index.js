@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {                
             const ids = data.drinks.map(element => element.idDrink)
-            const randomDrinkId = Math.floor(Math.random()*ids.length)
-            const cocktailId = (ids[randomDrinkId]) //be able to explain this better                    
+            const randomDrinkId = Math.floor(Math.random()*ids.length)            
+            const cocktailId = (ids[randomDrinkId])                 
             spiritBtn.hidden = true
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
             .then(response => response.json())
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
           count += 1;
           return count;
         }
-      }(0)) //be able to explain this closure better
+      }(0))
 
 
     const getNewDrink = () => {
@@ -142,13 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleMouseEnter = (event) => {    
         event.preventDefault()            
-        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
+        const generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.remove('hide')        
     }   
 
     const handleMouseLeave = (event) => {  
         event.preventDefault()              
-        let generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
+        const generatedDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${generatedDivId}`).classList.add('hide')        
     } 
     
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleDeleteCocktail = (event) => {
         event.preventDefault()  
-        let deleteElement = event.target.parentElement.id
+        const deleteElement = event.target.parentElement.id
         document.getElementById(`${deleteElement}`).remove()
 
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
