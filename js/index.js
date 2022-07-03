@@ -176,11 +176,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let handleDeleteCocktail = (event) => {
         event.preventDefault()  
-        console.log (event)
-        console.log(event.target.parentElement.id)
         let deleteElement = event.target.parentElement.id
-        document.getElementById(`${deleteElement}`).remove()
 
+        document.getElementById(`${deleteElement}`).remove()
+        fetch(`http://localhost:3000/drinks/${favoritesId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }             
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
     }
 
 })
