@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = document.createElement("button")
         btn.classList.add("expand")          
         btn.textContent = "Expand for details"        
-        btn.addEventListener("mouseenter",(handleMouseEnter))
+        btn.addEventListener("mouseover",(handleMouseOver))
         btn.addEventListener("mouseleave", (handleMouseLeave))        
         
         const img = document.createElement("img")
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     } 
 
-    const handleMouseEnter = (event) => {    
+    const handleMouseOver = (event) => {    
         event.preventDefault()            
         const getDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${getDivId }`).classList.remove('hide')        
