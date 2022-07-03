@@ -16,7 +16,9 @@ To install, please fork and clone this repository. Once you've cloned it to your
 After you're in your correct folder, type ``json-server --watch db.json`` in your terminal to start the server and ``open index.html`` (Macs) or ``explorer.exe index.html`` (Windows). The cocktail app will load so you can spin up a new recipe!
 
 
-This application utilizes the [The Cocktail DB API](https://www.thecocktaildb.com/api.php) and the header photo is by [Chinh Le Duc](https://unsplash.com/@mero_dnt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash]() 
+## Credit
+
+This application utilizes the [The Cocktail DB API](https://www.thecocktaildb.com/api.php) and the header photo is by [Chinh Le Duc](https://unsplash.com/@mero_dnt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/cocktail?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 
 
 
 ## Contributing
