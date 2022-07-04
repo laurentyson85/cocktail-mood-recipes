@@ -131,8 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()  
         moodBtn.hidden = false
         spiritBtn.hidden = true        
-        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true
-        console.log(favorites.childNodes.length)
+        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true        
         removeExisitingRecipe(recipeSection)                   
     }
 
@@ -170,8 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             favoritesId = data.id              
             renderCocktail(data)                     
-        })
-        console.log(favorites.childNodes.length)           
+        })                
     }
 
     const handleDeleteCocktail = (event) => {
