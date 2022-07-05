@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('click', (handleDropdowns))
 
-    function handleDropdowns(event) {
-        event.preventDefault()                
+    function handleDropdowns(event) {                   
     if (event.target.matches('.moodDropBtn')) {            
         mood = event.target.textContent     
         moodBtn.hidden = true
@@ -127,8 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click",(handleGetNewDrink))     
     }
 
-    const handleGetNewDrink = (event) => {
-        event.preventDefault()  
+    const handleGetNewDrink = () => {        
         moodBtn.hidden = false
         spiritBtn.hidden = true        
         favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true        
@@ -141,14 +139,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     } 
 
-    const handleMouseOver = (event) => {    
-        event.preventDefault()            
+    const handleMouseOver = (event) => {                      
         const getDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${getDivId }`).classList.remove('hide')        
     }   
 
-    const handleMouseLeave = (event) => {  
-        event.preventDefault()              
+    const handleMouseLeave = (event) => {                     
         const getDivId = event.target.parentElement.parentElement.lastElementChild.id        
         document.getElementById(`${getDivId}`).classList.add('hide')        
     } 
