@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function fetchCocktail(data){
+    const fetchCocktail = (data) => {
         const ids = data.drinks.map(element => element.idDrink)            
         const randomDrinkKey = Math.floor(Math.random()*ids.length)                   
         const cocktailId = (ids[randomDrinkKey])                          
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function buildIngredients(){             
+    const buildIngredients = () => {             
         const ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
         const measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)
         
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }   
                     
             
-    function renderCocktail(){
+    const renderCocktail = () => {
         const favoritesDiv = document.createElement("div")
         favoritesDiv.id = favoritesId
         favoritesDiv.classList.add("favorite")
