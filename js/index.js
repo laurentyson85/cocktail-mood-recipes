@@ -170,8 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleDeleteCocktail = (event) => {
         event.preventDefault()  
-        const deleteElement = event.target.parentElement.id
-        document.getElementById(`${deleteElement}`).remove()
+        const deleteElement = event.target.parentElement.id        
 
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
@@ -180,9 +179,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Accept": "application/json",
             }             
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true
+        .then(() => {
+            document.getElementById(`${deleteElement}`).remove()
+            favorites.childNodes.length > 3 ? favorites.hidden = false : favorites.hidden = true
+        })      
     } 
 })
 
