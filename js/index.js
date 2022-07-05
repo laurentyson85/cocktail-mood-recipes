@@ -23,22 +23,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const spirit = event.target.textContent          
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
         .then(response => response.json())
-        .then(data => {                
-            const ids = data.drinks.map(element => element.idDrink)            
-            const randomDrinkKey = Math.floor(Math.random()*ids.length)                   
-            const cocktailId = (ids[randomDrinkKey])                          
-            spiritBtn.hidden = true
-            fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
-            .then(response => response.json())
-            .then(data => {
-                fullRecipe = data.drinks[0]  
-                buildIngredients() 
-                getNewDrink()                     
-                renderCocktail()
-                })                 
-            })
+        .then(data => fetchCocktail(data))                          
         }
     }
+
+    function fetchCocktail(data){
+        const ids = data.drinks.map(element => element.idDrink)            
+        const randomDrinkKey = Math.floor(Math.random()*ids.length)                   
+        const cocktailId = (ids[randomDrinkKey])                          
+        spiritBtn.hidden = true
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
+        .then(response => response.json())
+        .then(data => {
+            fullRecipe = data.drinks[0]  
+            buildIngredients() 
+            getNewDrink()                     
+            renderCocktail()
+        })           
+    }
+
 
     function buildIngredients(){             
         const ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
@@ -108,9 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
         recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
 
         favorites.hidden = false
-    } 
-        
-    
+    }         
+      
     const generateNewDivId = (function(count) {
         return function() {
           count += 1;
@@ -170,8 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleDeleteCocktail = (event) => {
         event.preventDefault()  
-        const deleteElement = event.target.parentElement.id        
-
+        const deleteElement = event.target.parentElement.id     
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
             headers: {
