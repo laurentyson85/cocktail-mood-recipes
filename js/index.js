@@ -105,10 +105,16 @@ document.addEventListener("DOMContentLoaded", () => {
         mainDiv.append(secondDiv, thirdDiv)  
         favoritesDiv.append(mainDiv, br4, deleteBtn)   
 
-        recipeSection.childNodes.length > 0? favorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
+        recipeSection.childNodes.length > 0? myFavorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
 
         favorites.hidden = false
     } 
+
+    const myFavorites = document.createElement("div")
+    myFavorites.classList.add("section")
+    myFavorites.id = "myFaves"
+
+    favorites.append(myFavorites)
         
     
     const generateNewDivId = (function(count) {
@@ -129,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleGetNewDrink = () => {        
         moodBtn.hidden = false
         spiritBtn.hidden = true        
-        favorites.childNodes.length > 3 ? favorites.hidden = false: favorites.hidden = true        
+        myFavorites.childNodes.length > 0 ? favorites.hidden = false: favorites.hidden = true        
         removeExisitingRecipe(recipeSection)                   
     }
 
@@ -181,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(() => {
             document.getElementById(`${deleteElement}`).remove()
-            favorites.childNodes.length > 3 ? favorites.hidden = false : favorites.hidden = true
+            myFavorites.childNodes.length > 0 ? favorites.hidden = false : favorites.hidden = true
         })      
     } 
 })
