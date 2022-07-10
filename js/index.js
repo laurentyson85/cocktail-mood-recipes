@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
           count += 1;
           return count;
         }
-      }(0))
+      }(50))
 
 
     const getNewDrink = () => {
@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleDeleteCocktail = (event) => {
         event.preventDefault()  
-        const deleteElement = event.target.parentElement.id        
-
+        const deleteElement = event.target.parentElement.id    
+        
         fetch(`http://localhost:3000/drinks/${deleteElement}`, {
             method: "DELETE",
             headers: {
