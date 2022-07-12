@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const generateNewDivId = (function(count) {
         return function() {
           count += 1;
-          return count;
+          return `Drink ${count}`;
         }
-      }(50))
+      }(0))
 
 
     const getNewDrink = () => {
