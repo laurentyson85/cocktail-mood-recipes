@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
      const spiritBtn = document.querySelector(".spiritDropDownBtn")
      const recipeSection = document.querySelector("#cocktail-recipe")
      const favorites = document.querySelector("#favorites")
-     const button = document.createElement("button")
+     const newDrinkButton = document.createElement("button")
      let mood   
      let fullRecipe     
      let allIngredients = [] 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })                 
         }
 
-    const buildIngredients = () => {             
+    const buildIngredients = () => {              
         const ingredients = Object.entries(fullRecipe).slice(17,31).map(entry => entry[1]).filter(element => element !== null)                  
         const measurements = Object.entries(fullRecipe).slice(32,46).map(entry => entry[1]).filter(element => element !== null)
         
@@ -55,17 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
         favoritesDiv.id = favoritesId
         favoritesDiv.classList.add("favorite")        
 
-        const mainDiv = document.createElement("div")
-        mainDiv.classList.add("card")        
+        const recipeCardDiv = document.createElement("div")
+        recipeCardDiv.classList.add("card")        
 
-        const secondDiv = document.createElement("div")
-        secondDiv.classList.add("container")        
+        const containerDiv = document.createElement("div")
+        containerDiv.classList.add("container")        
 
-        const btn = document.createElement("button")
-        btn.classList.add("expand")          
-        btn.textContent = "Expand for details"        
-        btn.addEventListener("mouseover",(handleMouseOver))
-        btn.addEventListener("mouseleave", (handleMouseLeave))        
+        const expandBtn = document.createElement("button")
+        expandBtn.classList.add("expand")          
+        expandBtn.textContent = "Expand for details"        
+        expandBtn.addEventListener("mouseover",(handleMouseOver))
+        expandBtn.addEventListener("mouseleave", (handleMouseLeave))        
         
         const img = document.createElement("img")
         img.src = fullRecipe.strDrinkThumb        
@@ -77,12 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedMood= document.createElement("p")
         selectedMood.textContent = `Since you feel ${mood.toLowerCase()},` 
 
-        const thirdDiv = document.createElement("div")        
-        thirdDiv.classList.add("cardInfo", "hide") 
-        thirdDiv.id = generateNewDivId()            
+        const cardInfoDiv = document.createElement("div")        
+        cardInfoDiv.classList.add("cardInfo", "hide") 
+        cardInfoDiv.id = generateNewDivId()            
 
-        const p = document.createElement('p')            
-        p.textContent = `Ingredients: ${allIngredients.join(", ")}`   
+        const ingredientsList = document.createElement('p')            
+        ingredientsList.textContent = `Ingredients: ${allIngredients.join(", ")}`   
 
         const br = document.createElement("br")     
         const br2 = document.createElement("br")
@@ -102,12 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtn.textContent = "Delete ❌"
         deleteBtn.addEventListener("click", (handleDeleteCocktail))
                          
-        thirdDiv.append(p, br, instructions)                
-        secondDiv.append(img, selectedMood, drink, br2, btn)
-        mainDiv.append(secondDiv, thirdDiv)  
-        favoritesDiv.append(mainDiv, br4, deleteBtn)   
+        cardInfoDiv.append(ingredientsList, br, instructions)                
+        containerDiv.append(img, selectedMood, drink, br2, expandBtn)
+        recipeCardDiv.append(containerDiv, cardInfoDiv)  
+        favoritesDiv.append(recipeCardDiv, br4, deleteBtn)   
 
-        recipeSection.childNodes.length > 0? myFavorites.append(favoritesDiv): recipeSection.append(button, br3, mainDiv, br4,likeBtn)
+        recipeSection.childNodes.length > 0? myFavorites.append(favoritesDiv): recipeSection.append(newDrinkButton, br3, recipeCardDiv, br4,likeBtn)
 
         favorites.hidden = false
     }  
@@ -128,10 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const getNewDrink = () => {
-        button.classList.add("newDrink")
-        button.id = "newDrink"
-        button.textContent = "Select a new drink" 
-        button.addEventListener("click",(handleGetNewDrink))     
+        newDrinkButton.classList.add("newDrink")
+        newDrinkButton.id = "newDrink"
+        newDrinkButton.textContent = "Select a new drink" 
+        newDrinkButton.addEventListener("click",(handleGetNewDrink))     
     }
 
     const handleGetNewDrink = () => {        
